@@ -1,0 +1,33 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="OptionsMenuIcons" parent="AppTheme">
+        <item name="android:textColorSecondary">@color/icons</item>
+    </style>
+
+    <style name="first_column_details">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">@dimen/dp_4</item>
+        <item name="android:paddingLeft">@dimen/dp_4</item>
+        <item name="android:paddingRight">@dimen/dp_16</item>
+        <item name="android:paddingTop">@dimen/dp_4</item>
+        <item name="android:textColor">@color/coloSecondaryText</item>
+    </style>
+
+    <style name="second_column_details">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingBottom">@dimen/dp_4</item>
+        <item name="android:paddingRight">@dimen/dp_4</item>
+        <item name="android:paddingTop">@dimen/dp_4</item>
+        <item name="android:textColor">@color/coloSecondaryText</item>
+    </style>
+
+</resources>

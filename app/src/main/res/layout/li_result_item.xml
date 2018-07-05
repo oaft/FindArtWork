@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dp_4">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dp_8"
+        android:paddingRight="@dimen/dp_8">
+
+        <ImageView
+            android:id="@+id/iv_album_result"
+            android:layout_width="@dimen/image_size"
+            android:layout_height="@dimen/image_size"
+            android:layout_marginBottom="@dimen/dp_4"
+            android:layout_marginEnd="@dimen/dp_4"
+            android:layout_marginRight="@dimen/dp_4"
+            android:layout_marginTop="@dimen/dp_4"
+            android:contentDescription="@string/album_image"
+            android:src="@drawable/ic_launcher_background" />
+
+        <TextView
+            android:id="@+id/tv_item_album_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_4"
+            android:layout_toEndOf="@id/iv_album_result"
+            android:layout_toRightOf="@id/iv_album_result"
+            android:lines="1"
+            android:text="album name"
+            android:textColor="@color/coloPrimaryText"
+            android:textSize="@dimen/mediumText" />
+
+        <TextView
+            android:id="@+id/tv_item_artist_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_item_album_name"
+            android:layout_toEndOf="@id/iv_album_result"
+            android:layout_toRightOf="@id/iv_album_result"
+            android:lines="1"
+            android:text="artist name"
+            android:textColor="@color/coloPrimaryText"
+            android:textSize="@dimen/smallText" />
+
+        <TextView
+            android:id="@+id/tv_item_release_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_item_artist_name"
+            android:layout_toEndOf="@id/iv_album_result"
+            android:layout_toRightOf="@id/iv_album_result"
+            android:text="release"
+            android:textColor="@color/coloSecondaryText" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

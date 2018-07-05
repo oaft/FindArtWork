@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">FindArtWork</string>
+    <string name="enter_name">Введите запрос</string>
+    <string name="search">поиск</string>
+    <string name="list_of_songs">Список песен:</string>
+    <string name="album_image">album image</string>
+    <string name="price_itunes">Цена в iTunes</string>
+    <string name="tracks_count">Количество треков</string>
+    <string name="release_date">Дата релиза</string>
+    <string name="copyright">Правообладатель</string>
+    <string name="genre_name">Жанр</string>
+    <string name="artist_name">Исполнитель</string>
+    <string name="album_name">Альбом</string>
+    <string name="track_pattern">%s. %s</string>
+    <string name="error_msg">Ошибка загрузки\n%s</string>
+    <string name="nth_found_msg">По запросу ничего не найдено</string>
+    <string name="money_icon">money icon</string>
+</resources>

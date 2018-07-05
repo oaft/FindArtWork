@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_16">
+
+        <ProgressBar
+            android:id="@+id/pb_load_indicator_details"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/image_size"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/dp_8"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/iv_album_details"
+            android:layout_width="@dimen/image_size"
+            android:layout_height="@dimen/image_size"
+            android:layout_marginLeft="@dimen/dp_4"
+            android:layout_marginRight="@dimen/dp_4"
+            android:contentDescription="@string/album_image"
+            tools:src="@drawable/ic_launcher_background" />
+
+        <TextView
+            android:id="@+id/tv_album_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/iv_album_details"
+            android:layout_toRightOf="@+id/iv_album_details"
+            android:paddingBottom="@dimen/dp_4"
+            android:paddingLeft="@dimen/dp_4"
+            android:paddingRight="@dimen/dp_4"
+            android:textColor="@color/coloPrimaryText"
+            android:textSize="@dimen/mediumText" />
+
+        <TextView
+            android:id="@+id/tv_artist_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_album_name"
+            android:layout_toRightOf="@+id/iv_album_details"
+            android:paddingBottom="@dimen/dp_4"
+            android:paddingLeft="@dimen/dp_4"
+            android:paddingRight="@dimen/dp_4"
+            android:textColor="@color/coloPrimaryText" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_artist_name"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cv_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_4"
+                android:layout_marginStart="@dimen/dp_4"
+                android:layout_marginTop="24dp"
+                android:layout_weight="0.5"
+                android:paddingBottom="@dimen/dp_8"
+                android:paddingLeft="@dimen/dp_16"
+                android:paddingRight="@dimen/dp_16"
+                android:paddingTop="@dimen/dp_8"
+                android:visibility="visible">
+
+                <TableLayout
+                    android:id="@+id/tl_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TableRow>
+
+                        <TextView
+                            style="@style/first_column_details"
+                            android:text="@string/release_date" />
+
+                        <TextView
+                            android:id="@+id/tv_release_date"
+                            style="@style/second_column_details" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            style="@style/first_column_details"
+                            android:text="@string/tracks_count" />
+
+                        <TextView
+                            android:id="@+id/tv_track_count"
+                            style="@style/second_column_details" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            style="@style/first_column_details"
+                            android:text="@string/genre_name" />
+
+                        <TextView
+                            android:id="@+id/tv_genre_name"
+                            style="@style/second_column_details" />
+                    </TableRow>
+
+                    <TableRow android:orientation="vertical">
+
+                        <TextView
+                            style="@style/first_column_details"
+                            android:text="@string/price_itunes" />
+
+                        <TextView
+                            android:id="@+id/tv_album_price"
+                            style="@style/second_column_details" />
+
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            style="@style/first_column_details"
+                            android:text="@string/copyright" />
+
+                        <TextView
+                            android:id="@+id/tv_copyright"
+                            style="@style/second_column_details" />
+                    </TableRow>
+
+                </TableLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cv_tracks"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp_8"
+                android:layout_marginEnd="@dimen/dp_4"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_4"
+                android:layout_marginStart="@dimen/dp_8"
+                android:layout_marginTop="24dp"
+                android:layout_weight="0.5"
+                android:paddingBottom="@dimen/dp_8"
+                android:paddingLeft="@dimen/dp_16"
+                android:paddingRight="@dimen/dp_16"
+                android:paddingTop="@dimen/dp_8"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_track_list_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp_4"
+                        android:text="@string/list_of_songs"
+                        android:textColor="@color/coloSecondaryText" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_tracks_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/dp_4" />
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>
