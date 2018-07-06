@@ -12,6 +12,7 @@
     <string name="artist_name">Исполнитель</string>
     <string name="album_name">Альбом</string>
     <string name="track_pattern">%s. %s</string>
+    <string name="price_pattern">%s $</string>
     <string name="error_msg">Ошибка загрузки\n%s</string>
     <string name="nth_found_msg">По запросу ничего не найдено</string>
     <string name="money_icon">money icon</string>

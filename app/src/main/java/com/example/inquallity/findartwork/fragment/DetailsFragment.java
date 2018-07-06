@@ -168,6 +168,6 @@ public class DetailsFragment extends Fragment implements LoaderManager.LoaderCal
         mTvTrackCount.setText(albumDetails.getTrackCount());
         mTvArtistName.setText(albumDetails.getArtistName());
         mTvCopyright.setText(albumDetails.getCopyright());
-        mTvAlbumPrice.setText(albumDetails.getAlbumPrice());
+        mTvAlbumPrice.setText(getString(R.string.price_pattern, albumDetails.getAlbumPrice()));
     }
 }
