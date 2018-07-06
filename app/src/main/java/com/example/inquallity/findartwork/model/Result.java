@@ -11,20 +11,20 @@ import java.util.List;
  *
  * @author Olga Aleksandrova on 04-Jul-18.
  */
-public class Result {
+public class Result<T> {
 
     private boolean mIsSuccess;
-    private List<Album> mAlbums = new ArrayList<>();
+    private List<T> mData = new ArrayList<>();
     private String mErrorMessage;
 
     /**
      * Constructor for success result
      *
-     * @param albums Request result collection
+     * @param data Request result collection
      */
-    public Result(List<Album> albums) {
+    public Result(List<T> data) {
         mIsSuccess = true;
-        mAlbums = albums;
+        mData = data;
     }
 
     /**
@@ -42,8 +42,8 @@ public class Result {
     }
 
     @NonNull
-    public List<Album> getAlbums() {
-        return mAlbums;
+    public List<T> getData() {
+        return mData;
     }
 
     @Nullable

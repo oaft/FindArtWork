@@ -4,12 +4,15 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.AsyncTaskLoader;
+import android.util.Log;
 
 import com.example.inquallity.findartwork.api.ItunesApi;
 import com.example.inquallity.findartwork.model.AlbumDetails;
 import com.example.inquallity.findartwork.model.ResponsePage;
+import com.example.inquallity.findartwork.model.Result;
 
 import java.io.IOException;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Response;
@@ -19,7 +22,7 @@ import retrofit2.Response;
  *
  * @author Olga Aleksandrova on 03-Jul-18.
  */
-public class DetailsDataLoader extends AsyncTaskLoader<ResponsePage<AlbumDetails>> {
+public class DetailsDataLoader extends AsyncTaskLoader<Result> {
 
     private final ItunesApi mItunesApi;
     private String mIdCollection;
@@ -40,20 +43,25 @@ public class DetailsDataLoader extends AsyncTaskLoader<ResponsePage<AlbumDetails
 
     @Nullable
     @Override
-    public ResponsePage<AlbumDetails> loadInBackground() {
+    public Result loadInBackground() {
         final Call<ResponsePage<AlbumDetails>> detailsData = mItunesApi.getDetailsData(mIdCollection, MEDIA_TYPE);
-        ResponsePage<AlbumDetails> responsePage = null;
+        ResponsePage<AlbumDetails> responsePage;
         try {
             final Response<ResponsePage<AlbumDetails>> response = detailsData.execute();
             responsePage = response.body();
+            final List<AlbumDetails> albumDetails = responsePage.getItems();
+            if (responsePage != null) {
+                return new Result(albumDetails);
+            }
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e(DetailsDataLoader.class.getSimpleName(), e.getMessage(), e);
+            return new Result(e.getMessage());
         }
-        return responsePage;
+        return null;
     }
 
     @Override
-    public void deliverResult(ResponsePage<AlbumDetails> data) {
+    public void deliverResult(Result data) {
         super.deliverResult(data);
     }
 

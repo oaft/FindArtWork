@@ -126,8 +126,8 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     public void onLoadFinished(@NonNull Loader<Result> loader, Result result) {
         mProgressBar.setVisibility(View.GONE);
         if (result != null) {
-            if (result.isSuccess() && !result.getAlbums().isEmpty()) {
-                mAlbumsListAdapter.showResults(result.getAlbums());
+            if (result.isSuccess() && !result.getData().isEmpty()) {
+                mAlbumsListAdapter.showResults(result.getData());
                 mRecyclerView.setVisibility(View.VISIBLE);
             } else if (result.isSuccess()) {
                 mTvErrorMsg.setText(R.string.nth_found_msg);

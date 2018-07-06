@@ -22,7 +22,7 @@ import com.example.inquallity.findartwork.R;
 import com.example.inquallity.findartwork.api.ItunesApi;
 import com.example.inquallity.findartwork.loader.DetailsDataLoader;
 import com.example.inquallity.findartwork.model.AlbumDetails;
-import com.example.inquallity.findartwork.model.ResponsePage;
+import com.example.inquallity.findartwork.model.Result;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -34,7 +34,7 @@ import butterknife.Unbinder;
 /**
  * @author Olga Aleksandrova on 01-Jul-18.
  */
-public class DetailsFragment extends Fragment implements LoaderManager.LoaderCallbacks<ResponsePage<AlbumDetails>> {
+public class DetailsFragment extends Fragment implements LoaderManager.LoaderCallbacks<Result> {
 
     @BindView(R.id.iv_album_details) ImageView mTvImageAlbum;
     @BindView(R.id.tv_album_name) TextView mTvAlbumName;
@@ -45,6 +45,7 @@ public class DetailsFragment extends Fragment implements LoaderManager.LoaderCal
     @BindView(R.id.tv_copyright) TextView mTvCopyright;
     @BindView(R.id.tv_album_price) TextView mTvAlbumPrice;
     @BindView(R.id.pb_load_indicator_details) ProgressBar mProgressBar;
+    @BindView(R.id.tv_error_msg_details) TextView mTvErrorMsg;
     @BindView(R.id.cv_info) CardView mCvInfo;
     @BindView(R.id.cv_tracks) CardView mCvTracks;
     @BindView(R.id.ll_tracks_list) ViewGroup mTracksContainer;
@@ -106,33 +107,39 @@ public class DetailsFragment extends Fragment implements LoaderManager.LoaderCal
 
     @NonNull
     @Override
-    public Loader<ResponsePage<AlbumDetails>> onCreateLoader(int id, @Nullable Bundle args) {
+    public Loader<Result> onCreateLoader(int id, @Nullable Bundle args) {
         return new DetailsDataLoader(getActivity(), AppDelegate.sRetrofit.create(ItunesApi.class), mIdCollection);
     }
 
     @Override
-    public void onLoadFinished(@NonNull Loader<ResponsePage<AlbumDetails>> loader, ResponsePage<AlbumDetails> data) {
-        if (data != null) {
-            mProgressBar.setVisibility(View.GONE);
-            showData(data);
-            mCvInfo.setVisibility(View.VISIBLE);
-            mCvTracks.setVisibility(View.VISIBLE);
+    public void onLoadFinished(@NonNull Loader<Result> loader, Result result) {
+
+        mProgressBar.setVisibility(View.GONE);
+        if (result != null) {
+            if (result.isSuccess() && !result.getData().isEmpty()) {
+                showData(result.getData());
+                mCvInfo.setVisibility(View.VISIBLE);
+                mCvTracks.setVisibility(View.VISIBLE);
+            } else if (result.isSuccess()) {
+                mTvErrorMsg.setText(R.string.nth_found_msg);
+                mTvErrorMsg.setVisibility(View.VISIBLE);
+            } else {
+                mTvErrorMsg.setText(getString(R.string.error_msg, result.getErrorMessage()));
+                mTvErrorMsg.setVisibility(View.VISIBLE);
+            }
+        } else {
+            mTvErrorMsg.setText(R.string.nth_found_msg);
+            mTvErrorMsg.setVisibility(View.VISIBLE);
         }
     }
 
     @Override
-    public void onLoaderReset(@NonNull Loader<ResponsePage<AlbumDetails>> loader) {
+    public void onLoaderReset(@NonNull Loader<Result> loader) {
 
     }
 
-    /**
-     * This function shows received from API data
-     *
-     * @param data Data received from API
-     */
-    private void showData(ResponsePage<AlbumDetails> data) {
+    private void showData(List<AlbumDetails> items) {
         mTracksContainer.removeAllViews();
-        final List<AlbumDetails> items = data.getItems();
         AlbumDetails albumDetails = new AlbumDetails();
 
         int count = 0;
