@@ -50,13 +50,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="@dimen/dp_16">
+        android:layout_marginRight="@dimen/dp_16"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_8"
+       >
 
         <TextView
             android:id="@+id/tv_error_msg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dp_16"
+            android:layout_margin="@dimen/dp_8"
             android:gravity="center"
             android:text="@string/error_msg"
             android:textColor="@color/coloPrimaryText"
@@ -70,6 +73,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dp_12"
         android:layout_marginRight="@dimen/dp_12"
-        android:visibility="gone" />
+        android:visibility="visible" />
 
 </LinearLayout>
